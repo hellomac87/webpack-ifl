@@ -52,3 +52,4 @@ NPM으로 패키지를 설치하면 package.json에 설치한 버전을 기록�
 
 webpack
 babel
+휴가
