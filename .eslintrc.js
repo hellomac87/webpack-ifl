@@ -11,7 +11,7 @@ module.exports = {
     plugins: [
         "prettier"
       ],
-      rules: {
-        "prettier/prettier": "error"
-      },
+    rules: {
+    "prettier/prettier": "error"
+    },
 };
