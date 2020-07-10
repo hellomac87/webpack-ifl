@@ -8,11 +8,15 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   mode: "development",
   entry: {
-    main: "./app.js",
+    main: "./src/app.js",
   },
   output: {
     path: path.resolve("./dist"),
     filename: "[name].js",
+  },
+  devServer: {
+    overlay: true,
+    stats: 'errors-only'
   },
   module: {
     rules: [
@@ -61,9 +65,9 @@ module.exports = {
       minify:
         process.env.NODE_ENV === "production"
           ? {
-              collapseWhitespace: true,
-              removeComments: true,
-            }
+            collapseWhitespace: true,
+            removeComments: true,
+          }
           : false,
     }),
     new CleanWebpackPlugin(),
