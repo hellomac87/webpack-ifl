@@ -15,8 +15,13 @@ module.exports = {
     filename: "[name].js",
   },
   devServer: {
-    overlay: true,
-    stats: 'errors-only'
+    // contentBase: path.join(__dirname, "dist"), 
+    // publicPath: "/", 
+    // host: "dev.domain.com",
+    overlay: true, // 빌드시 에러나 경고 문구를 브라우저 화면에 표시
+    port: 8080, // 개발서버 port 설정, 기본값은 8080
+    stats: "errors-only",
+    // historyApiFallback: true, // 히스토리 API를 사용하는 SPA 개발시 설정한다. 404가 발생하면 index.html로 리다이렉트한다.
   },
   module: {
     rules: [
