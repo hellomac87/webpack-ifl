@@ -4,6 +4,7 @@ const childProcess = require("child_process");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const apiMocker = require("connect-api-mocker");
 
 module.exports = {
   mode: "development",
@@ -22,6 +23,26 @@ module.exports = {
     port: 8080, // 개발서버 port 설정, 기본값은 8080
     stats: "errors-only",
     // historyApiFallback: true, // 히스토리 API를 사용하는 SPA 개발시 설정한다. 404가 발생하면 index.html로 리다이렉트한다.
+    before: (app) => {
+      // app : server 객체 (개발서버, express 객체)
+      // before 함수 내에서 webpack 개발서버의 기능을 추가 할 수 있음
+      // app.get('/api/users', (req, res) => {
+      //   res.json([
+      //     {
+      //       id: 1,
+      //       name: "Alice"
+      //     }, {
+      //       id: 2,
+      //       name: "asdf"
+      //     },
+      //     {
+      //       id: 3,
+      //       name: "qwer"
+      //     }
+      //   ])
+      // })
+      app.use(apiMocker('/api', 'mocks/api'));;
+    }
   },
   module: {
     rules: [
