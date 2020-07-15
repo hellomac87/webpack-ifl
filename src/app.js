@@ -1,17 +1,17 @@
-import "./app.css";
 import form from './form';
 import result from './result';
+import "./app.css";
 
-// document.addEventListener("DOMContentLoaded", async () => {
-//   const res = await axios.get('/api/users');
-//   console.log(res);
+document.addEventListener("DOMContentLoaded", async () => {
+  const res = await axios.get('/api/users');
+  console.log(res);
 
-//   const userList = (res.data || []).map(user => {
-//     return `<div>${user.id}: ${user.name}</div>`
-//   }).join('');
+  const userList = (res.data || []).map(user => {
+    return `<div>${user.id}: ${user.name}</div>`
+  }).join('');
 
-//   document.body.innerHTML = userList;
-// });
+  document.body.innerHTML = userList;
+});
 
 let resultEl;
 let formEl;
@@ -37,3 +37,4 @@ if (module.hot) {
     resultEl.innerHTML = await result.render();
   })
 }
+console.log('app.js')
