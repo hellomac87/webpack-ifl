@@ -13,11 +13,21 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/, // parttern
+                test: /\.css$/, // parttern
                 use: [
-                    path.resolve('./my-webpack-loader.js')
+                    'style-loader',
+                    'css-loader'
                 ]
             },
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                loader: 'url-loader',
+                options: {
+                    publicPath: './dist/',
+                    name: '[name].[ext]?[hash]',
+                    limit: 20000, //20kb
+                },
+            }
         ]
     }
 }
