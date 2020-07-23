@@ -1,4 +1,5 @@
 const path = require('path');
+const MyWebpackPlugin = require('./my-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -11,6 +12,7 @@ module.exports = {
         filename: '[name].js'
     },
     module: {
+        // loader : 각 파일에 실행됨
         rules: [
             {
                 test: /\.css$/, // parttern
@@ -29,5 +31,8 @@ module.exports = {
                 },
             }
         ]
-    }
+    },
+    plugins: [ // 번들된 결과물에 후처리
+        new MyWebpackPlugin(),
+    ]
 }
